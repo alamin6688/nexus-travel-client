@@ -63,7 +63,7 @@ const SignUp = () => {
       <Helmet>
         <title>Nexus Travel | Sign Up</title>
       </Helmet>
-      <div className="min-h-[calc(100vh-366px)] flex items-center justify-center bg-gray-200 py-10 px-4 md:py-16">
+      <div className="min-h-[calc(100vh-366px)] flex items-center justify-center bg-base-200 py-10 px-4 md:py-16">
         <div className="hero-content w-full">
           <div className="card w-full max-w-sm shadow-2xl bg-base-100">
             <div className="text-center pt-6">
