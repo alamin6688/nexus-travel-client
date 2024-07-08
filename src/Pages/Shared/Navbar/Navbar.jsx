@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/UseAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
   // Check localStorage for theme, default to "light" if not set
   const storedTheme = localStorage.getItem("theme") || "light";
   const [theme, setTheme] = useState(storedTheme);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
 
   const navLinks = (
     <>
@@ -30,7 +38,7 @@ const Navbar = () => {
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
 
-  const handleToggle = (e) => {
+  const handleToggle = () => {
     // Toggle between light and dark theme
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
@@ -125,7 +133,7 @@ const Navbar = () => {
             </div>
           </div>
           {/* Dropdown menu for user actions */}
-          <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-44 p-2 shadow font-semibold">
+          <ul className="menu menu-sm dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-44 p-2 space-y-1 shadow font-semibold">
             <li>
               <a>Profile</a>
             </li>
@@ -133,7 +141,21 @@ const Navbar = () => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              {user ? (
+                <Link
+                  onClick={handleLogout}
+                  className="btn bg-red-500 hover:bg-red-600 text-white border-none hover:font-bold"
+                >
+                  Sign Out
+                </Link>
+              ) : (
+                <Link
+                  to="/sign-in"
+                  className="btn w-full bg-green-500 hover:bg-green-600 text-white border-none hover:font-bold"
+                >
+                  Sign In{" "}
+                </Link>
+              )}
             </li>
           </ul>
         </div>
