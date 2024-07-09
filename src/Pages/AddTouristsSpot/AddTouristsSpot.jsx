@@ -1,4 +1,6 @@
+import axios from "axios";
 import useAuth from "../../Hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const AddTouristsSpot = ({ update }) => {
   const { user } = useAuth();
@@ -31,6 +33,31 @@ const AddTouristsSpot = ({ update }) => {
       userName,
     };
     console.log(addInfo);
+
+    axios
+      .post("http://localhost:5000/addTouristSpot", addInfo)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Tourist spot added successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Tourist spot failed to add!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
 
   return (
@@ -44,7 +71,9 @@ const AddTouristsSpot = ({ update }) => {
             <div className="flex flex-col gap-2">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[16px] font-bold">Country Name</span>
+                  <span className="label-text text-[16px] font-bold">
+                    Country Name
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -57,7 +86,9 @@ const AddTouristsSpot = ({ update }) => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[16px] font-bold">Description</span>
+                  <span className="label-text text-[16px] font-bold">
+                    Description
+                  </span>
                 </label>
                 <textarea
                   name="description"
@@ -68,7 +99,9 @@ const AddTouristsSpot = ({ update }) => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-[16px] font-bold">Image URL</span>
+                  <span className="label-text text-[16px] font-bold">
+                    Image URL
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -82,7 +115,9 @@ const AddTouristsSpot = ({ update }) => {
             <div className="md:flex gap-6">
               <div className="form-control md:w-1/2">
                 <label className="label">
-                  <span className="label-text text-[16px] font-bold">Average Cost</span>
+                  <span className="label-text text-[16px] font-bold">
+                    Average Cost
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -94,7 +129,9 @@ const AddTouristsSpot = ({ update }) => {
               </div>
               <div className="form-control md:w-1/2">
                 <label className="label">
-                  <span className="label-text text-[16px] font-bold">Tourists Spot Name</span>
+                  <span className="label-text text-[16px] font-bold">
+                    Tourists Spot Name
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -108,7 +145,9 @@ const AddTouristsSpot = ({ update }) => {
             <div className="md:flex gap-6">
               <div className="form-control md:w-1/2">
                 <label className="label">
-                  <span className="label-text text-[16px] font-bold">Location</span>
+                  <span className="label-text text-[16px] font-bold">
+                    Location
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -120,7 +159,9 @@ const AddTouristsSpot = ({ update }) => {
               </div>
               <div className="form-control md:w-1/2">
                 <label className="label">
-                  <span className="label-text text-[16px] font-bold">Seasonality</span>
+                  <span className="label-text text-[16px] font-bold">
+                    Seasonality
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -134,7 +175,9 @@ const AddTouristsSpot = ({ update }) => {
             <div className="md:flex gap-6">
               <div className="form-control md:w-1/2">
                 <label className="label">
-                  <span className="label-text text-[16px] font-bold">Travel Time</span>
+                  <span className="label-text text-[16px] font-bold">
+                    Travel Time
+                  </span>
                 </label>
                 <select
                   name="travel_time"
@@ -154,7 +197,9 @@ const AddTouristsSpot = ({ update }) => {
               </div>
               <div className="form-control md:w-1/2">
                 <label className="label">
-                  <span className="label-text text-[16px] font-bold">Total Visitors Per Year</span>
+                  <span className="label-text text-[16px] font-bold">
+                    Total Visitors Per Year
+                  </span>
                 </label>
                 <input
                   type="text"

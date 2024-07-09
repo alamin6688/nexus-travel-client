@@ -1,0 +1,55 @@
+const AllTouristsSpotCard = ({ card }) => {
+  const {
+    name,
+    description,
+    image,
+    tourists_spot_name,
+    average_cost,
+    totalVisitorsPerYear,
+    travel_time,
+    seasonality,
+  } = card;
+
+  return (
+    <div className="flex flex-col h-full">
+      <div className="card card-compact bg-base-200 w-full shadow-2xl overflow-hidden flex flex-col h-full transform transition-transform duration-300 ease-in-out hover:scale-95">
+        <figure className="overflow-hidden relative">
+          <img
+            src={image}
+            alt="Spot Image"
+            className="w-full h-[250px] object-cover transition-transform duration-300 ease-in-out transform scale-100 hover:scale-90"
+          />
+        </figure>
+        <div className="p-4 pb-8 space-y-2 flex-1 flex flex-col">
+          <div className="mb-3">
+            <h2 className="card-title text-3xl">{name}</h2>
+            <p className="font-semibold text-[18px]">{tourists_spot_name}</p>
+          </div>
+          <p className="line-clamp-3 text-[16px]">{description}</p>
+          <div className="flex-1"></div>
+          <div className="space-y-2">
+            <p>
+              <span className="font-semibold">Total Visitors Per Year:</span>{" "}
+              {totalVisitorsPerYear}
+            </p>
+            <p>
+              <span className="font-semibold">Travel Time:</span> {travel_time}
+            </p>
+            <p>
+              <span className="font-semibold">Seasonality:</span> {seasonality}
+            </p>
+            <p>
+              <span className="font-semibold">Average Cost:</span>{" "}
+              {average_cost}
+            </p>
+          </div>
+          <div className="card-action pt-4">
+            <button className="btn btn-primary w-full">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AllTouristsSpotCard;
