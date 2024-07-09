@@ -23,6 +23,7 @@ const SocialLogin = () => {
           role: "user",
         };
 
+        
         // Post user to backend
         axios.post("http://localhost:5000/users", user)
           .then(() => {
