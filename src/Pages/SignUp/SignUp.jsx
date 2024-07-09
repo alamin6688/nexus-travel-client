@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import SocialLogin from "../../Components/SocialLogin";
 import useAuth from "../../Hooks/UseAuth";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const SignUp = () => {
   const {
@@ -22,19 +23,19 @@ const SignUp = () => {
     const password = data.password;
     const photoURL = data.photoURL;
 
-    const newUser = {
+    const user = {
       email: email,
       name: name,
       photoURL: photoURL,
       role: "user",
     };
-    console.log(newUser);
 
     createUser(email, password)
       .then(() => {
-        const name = data.name;
-        const photo = data.photoURL;
-        return updateUserProfile(name, photo);
+        updateUserProfile(name, photoURL);
+
+        // Post a User to DB
+        return axios.post("http://localhost:5000/users", user);
       })
       .then(() => {
         Swal.fire({

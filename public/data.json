@@ -1,0 +1,80 @@
+[
+  {
+      "name": "California",
+      "image": "https://i.postimg.cc/LszGxVyR/golden-gate-bridge-body-water-near-rock-formations-sunset-san-francisco-california.jpg",
+      "description": "Iconic state known for its beaches, Hollywood entertainment industry, and vibrant cities like Los Angeles and San Francisco.",
+      "average_cost": "$120-150",
+      "tourists_spot_name": "Golden Gate Bridge",
+      "location": "San Francisco",
+      "seasonality": "Year-round",
+      "travel_time": "2-3 days",
+      "totalVisitorsPerYear": 7000000,
+      "User_Email": "example@email.com",
+      "User_Name": "John Doe"
+  },
+  {
+      "name": "New York",
+      "image": "https://i.postimg.cc/wMtVGq6J/beautiful-manhattan-bridge-new-york-usa.jpg",
+      "description": "Diverse state famous for its iconic city, New York City, known for Times Square, Broadway theaters, and Central Park.",
+      "average_cost": "$100-130",
+      "tourists_spot_name": "Statue of Liberty",
+      "location": "New York City",
+      "seasonality": "April to October",
+      "travel_time": "4-5 days",
+      "totalVisitorsPerYear": 1500000,
+      "User_Email": "another@example.com",
+      "User_Name": "Jane Smith"
+  },
+  {
+      "name": "Arizona",
+      "image": "https://i.postimg.cc/DwQcDYKC/beautiful-shot-desert-mountain-arches-national-park-sunny-day.jpg",
+      "description": "Southwestern state known for the Grand Canyon, a breathtaking natural wonder carved by the Colorado River.",
+      "average_cost": "$80-110",
+      "tourists_spot_name": "Grand Canyon",
+      "location": "Arizona",
+      "seasonality": "Spring and autumn",
+      "travel_time": "5-6 days",
+      "totalVisitorsPerYear": 10000000,
+      "User_Email": "user3@example.com",
+      "User_Name": "Alice Johnson"
+  },
+  {
+      "name": "Hawaii",
+      "image": "https://i.postimg.cc/3wnFr4Nm/sea-beach.jpg",
+      "description": "Aloha state known for its tropical climate, stunning beaches, active volcanoes, and rich Polynesian culture.",
+      "average_cost": "$130-150",
+      "tourists_spot_name": "Waikiki Beach",
+      "location": "Honolulu",
+      "seasonality": "Summer",
+      "travel_time": "7 days",
+      "totalVisitorsPerYear": 2000000,
+      "User_Email": "user4@example.com",
+      "User_Name": "David Brown"
+  },
+  {
+      "name": "Texas",
+      "image": "https://i.postimg.cc/zBQwWsnf/bbec672afd4002d10e6eea90c1facf73.jpg",
+      "description": "Lone Star state known for its vast landscapes, cowboy culture, and vibrant cities like Houston, Dallas, and Austin.",
+      "average_cost": "$80-120",
+      "tourists_spot_name": "Alamo Mission",
+      "location": "San Antonio",
+      "seasonality": "Year-round",
+      "travel_time": "3-4 days",
+      "totalVisitorsPerYear": 8000000,
+      "User_Email": "user5@example.com",
+      "User_Name": "Emily Clark"
+  },
+  {
+      "name": "Nevada",
+      "image": "https://i.postimg.cc/TYgSd06b/las-vegas-sunset.jpg",
+      "description": "Silver state known for its desert landscapes, entertainment capital Las Vegas, and natural wonders like the Hoover Dam.",
+      "average_cost": "$90-140",
+      "tourists_spot_name": "Las Vegas Strip",
+      "location": "Las Vegas",
+      "seasonality": "Spring and fall",
+      "travel_time": "4-5 days",
+      "totalVisitorsPerYear": 6000000,
+      "User_Email": "user6@example.com",
+      "User_Name": "Michael Davis"
+  }
+]

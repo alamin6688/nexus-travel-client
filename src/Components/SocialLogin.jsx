@@ -3,6 +3,7 @@ import { IoLogoGithub } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const SocialLogin = () => {
   const { googleSignIn } = useAuth();
@@ -12,18 +13,36 @@ const SocialLogin = () => {
     googleSignIn()
       .then((result) => {
         console.log("Google Sign-In Result:", result);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Signed Up successfully!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate("/"); // Navigate to home or another route upon successful sign-in
+
+        // Making user info to post in DB
+        const { email, displayName, photoURL } = result.user;
+        const user = {
+          email: email,
+          name: displayName,
+          photoURL: photoURL,
+          role: "user",
+        };
+
+        // Post user to backend
+        axios.post("http://localhost:5000/users", user)
+          .then(() => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Signed In successfully!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+          })
+          // Handle error if post request fails
+          .catch((error) => {
+            console.error("Error posting user data:", error);
+          });
       })
+      // Handle sign-in error
       .catch((error) => {
         console.error("Google Sign-In Error:", error);
-        // Handle sign-in error (e.g., display an error message)
       });
   };
 
