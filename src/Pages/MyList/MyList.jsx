@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/UseAuth";
 import axios from "axios";
+import Swal from "sweetalert2";
+import EmptyState from "../../Components/EmptyState";
 
 const MyList = () => {
   const { user } = useAuth();
@@ -23,6 +25,49 @@ const MyList = () => {
         setLoading(false);
       });
   }, [user]);
+
+  if (touristSpots?.length < 1) {
+    return (
+      <EmptyState
+        message={"No Tourist Spots added yet!"}
+        address={"/allTouristsSpot"}
+        label={"Explore Tourist Spots"}
+      />
+    );
+  }
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:5000/myList/${id}`)
+          .then(() => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your tourist spot has been deleted!",
+              icon: "success",
+            });
+            setTouristSpots((remainingSpots) =>
+              remainingSpots.filter((spot) => spot._id !== id)
+            );
+          })
+          .catch((error) => {
+            console.error(
+              "There was an error deleting the tourist spot!",
+              error
+            );
+          });
+      }
+    });
+  };
 
   return (
     <div className="bg-base-200">
@@ -75,7 +120,13 @@ const MyList = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex gap-2 items-center">
                           <button className="btn">Update</button>
-                          <button className="btn">Delete</button>
+
+                          <button
+                            onClick={() => handleDelete(spot._id)}
+                            className="btn bg-error"
+                          >
+                            Delete
+                          </button>
                         </div>
                       </td>
                     </tr>
