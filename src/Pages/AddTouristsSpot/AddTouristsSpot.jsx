@@ -61,7 +61,7 @@ const AddTouristsSpot = ({ update }) => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-366px)]">
+    <div className="min-h-[calc(100vh-366px)] lg:mt-12 lg:mb-16">
       <div className="min-h-[calc(100vh-380px)] max-w-screen-xl mx-auto flex flex-col items-center justify-center">
         <div className="bg-base-200 w-full rounded-xl py-8 md:px-16">
           <h2 className="text-center font-inter text-3xl font-extrabold">

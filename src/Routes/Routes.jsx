@@ -7,6 +7,7 @@ import AddTouristsSpot from "../Pages/AddTouristsSpot/AddTouristsSpot";
 import PrivateRoute from "../Providers/PrivateRoute";
 import AllTouristsSpot from "../Pages/AllTouristsSpot/AllTouristsSpot";
 import MyList from "../Pages/MyList/MyList";
+import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 
  export const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ import MyList from "../Pages/MyList/MyList";
         {
           path: "/allTouristsSpot",
           element: <AllTouristsSpot></AllTouristsSpot>
+        },
+        {
+          path: "/allTouristSpot/:id",
+          element: <DetailsPage></DetailsPage>
         },
         {
           path: "/addTouristsSpot",

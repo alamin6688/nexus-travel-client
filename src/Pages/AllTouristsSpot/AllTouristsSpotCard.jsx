@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 const AllTouristsSpotCard = ({ card }) => {
   const {
+    _id,
     name,
     description,
     image,
@@ -44,7 +47,9 @@ const AllTouristsSpotCard = ({ card }) => {
             </p>
           </div>
           <div className="card-action pt-4">
-            <button className="btn btn-primary w-full">View Details</button>
+            <Link to={`/allTouristSpot/${_id}`}>
+              <button className="btn btn-primary w-full">View Details</button>
+            </Link>
           </div>
         </div>
       </div>

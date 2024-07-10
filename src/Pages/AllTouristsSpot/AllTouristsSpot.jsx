@@ -35,7 +35,10 @@ const AllTouristsSpot = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
               {touristSpot.map((card) => (
-                <AllTouristsSpotCard key={card._id} card={card} />
+                <AllTouristsSpotCard 
+                key={card._id} 
+                card={card} 
+                />
               ))}
             </div>
           </div>
