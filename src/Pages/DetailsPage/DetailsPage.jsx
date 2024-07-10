@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useAuth from "../../Hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const DetailsPage = () => {
+  const { user } = useAuth();
   const [touristSpot, setTouristSpot] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -11,7 +14,6 @@ const DetailsPage = () => {
     axios
       .get(`http://localhost:5000/allTouristSpot/${id}`)
       .then((response) => {
-        console.log(response.data);
         setTouristSpot(response.data);
         setLoading(false);
       })
@@ -20,6 +22,52 @@ const DetailsPage = () => {
         setLoading(false);
       });
   }, [id]);
+
+  const handleAdd = (id) => {
+    console.log(id);
+    const myList = {
+      name: touristSpot.name,
+      tourists_spot_name: touristSpot.tourists_spot_name,
+      travel_time: touristSpot.travel_time,
+      average_cost: touristSpot.average_cost,
+      loggedUser: user?.email,
+      cartId: touristSpot._id,
+    };
+    axios
+      .post(`http://localhost:5000/myList`, myList)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Added to your list successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+        if (error.response && error.response.data.message) {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: error.response.data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Tourist spot failed to add in your list!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   return (
     <div className="min-h-[calc(100vh-366px)] flex flex-col items-center justify-center bg-base-300">
@@ -70,7 +118,12 @@ const DetailsPage = () => {
                   </p>
                 </div>
                 <div className="pt-2">
-                  <button className="btn btn-primary">Add To List</button>
+                  <button
+                    onClick={() => handleAdd(id)}
+                    className="btn btn-primary"
+                  >
+                    Add To List
+                  </button>
                 </div>
               </div>
             </div>
