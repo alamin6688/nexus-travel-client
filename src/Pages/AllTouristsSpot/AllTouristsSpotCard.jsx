@@ -43,7 +43,7 @@ const AllTouristsSpotCard = ({ card }) => {
             </p>
             <p>
               <span className="font-semibold">Average Cost:</span>{" "}
-              {average_cost}
+              ${average_cost}
             </p>
           </div>
           <div className="card-action pt-4">
