@@ -125,10 +125,16 @@ const Navbar = () => {
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full">
+            <div
+              className="w-10 rounded-full"
+              title={user?.displayName || "Guest"}
+            >
               <img
                 alt="User avatar"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                src={
+                  user?.photoURL ||
+                  "https://i.postimg.cc/wM5cB69C/istockphoto-1300845620-612x612.jpg"
+                }
               />
             </div>
           </div>
