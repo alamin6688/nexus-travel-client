@@ -44,7 +44,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-xl px-4">
+    <div className="navbar bg-base-200 shadow-xl px-4 max-w-screen-xl mx-auto">
       <div className="navbar-start">
         {/* Toggle button for mobile */}
         <div className="dropdown">

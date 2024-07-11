@@ -27,14 +27,20 @@ const DetailsPage = () => {
     console.log(id);
     const myList = {
       name: touristSpot.name,
-      tourists_spot_name: touristSpot.tourists_spot_name,
-      travel_time: touristSpot.travel_time,
+      description: touristSpot.description,
+      image: touristSpot.image,
       average_cost: touristSpot.average_cost,
+      tourists_spot_name: touristSpot.tourists_spot_name,
+      location: touristSpot.location,
+      seasonality: touristSpot.seasonality,
+      travel_time: touristSpot.travel_time,
+      totalVisitorsPerYear: touristSpot.totalVisitorsPerYear,
       loggedUser: user?.email,
+      userName: user?.displayName,
       cartId: touristSpot._id,
     };
     axios
-      .post(`http://localhost:5000/myList`, myList)
+      .post(`http://localhost:5000/my-List`, myList)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

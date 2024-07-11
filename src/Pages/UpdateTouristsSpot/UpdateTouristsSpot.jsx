@@ -1,11 +1,25 @@
-import axios from "axios";
+import { useParams } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth";
-import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const AddTouristsSpot = () => {
+const UpdateTouristsSpot = () => {
   const { user } = useAuth();
+  const { id } = useParams();
+  const [spotData, setSpotData] = useState([]);
 
-  const handleAdd = (event) => {
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/my-list/${id}`)
+      .then((response) => {
+        setSpotData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching tourist spot data:", error);
+      });
+  }, [id]);
+
+  const handleUpdate = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -19,7 +33,7 @@ const AddTouristsSpot = () => {
     const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
     const userEmail = user?.email;
     const userName = user?.displayName;
-    const addInfo = {
+    const updatedInfo = {
       name,
       description,
       image,
@@ -32,42 +46,23 @@ const AddTouristsSpot = () => {
       userEmail,
       userName,
     };
-    console.log(addInfo);
+    console.log(updatedInfo);
 
-    axios
-      .post("http://localhost:5000/addTouristSpot", addInfo)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Tourist spot added successfully!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Tourist spot failed to add!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      });
+    // Add your axios call to update the tourist spot with `updatedInfo`
   };
+
+  if (!spotData) {
+    return <div>Loading...</div>; // or any other loading indicator
+  }
 
   return (
     <div className="min-h-[calc(100vh-366px)] lg:mt-12 lg:mb-16">
       <div className="min-h-[calc(100vh-380px)] max-w-screen-xl mx-auto flex flex-col items-center justify-center">
         <div className="bg-base-200 w-full rounded-xl py-8 md:px-16">
           <h2 className="text-center font-inter text-3xl font-extrabold">
-            Add Tourist Spot
+            Update Tourist Spot
           </h2>
-          <form onSubmit={handleAdd} className="card-body px-6">
+          <form onSubmit={handleUpdate} className="card-body px-6">
             <div className="flex flex-col gap-2">
               <div className="form-control">
                 <label className="label">
@@ -78,7 +73,7 @@ const AddTouristsSpot = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Enter country name"
+                  defaultValue={spotData.location}
                   className="input w-full bg-gray-200"
                   required
                 />
@@ -92,7 +87,7 @@ const AddTouristsSpot = () => {
                 </label>
                 <textarea
                   name="description"
-                  placeholder="Enter description"
+                  defaultValue={spotData.description}
                   className="textarea w-full bg-gray-200 resize-y"
                   required
                 ></textarea>
@@ -106,7 +101,7 @@ const AddTouristsSpot = () => {
                 <input
                   type="text"
                   name="image"
-                  placeholder="Enter image URL"
+                  defaultValue={spotData.image}
                   className="input bg-gray-200"
                   required
                 />
@@ -122,7 +117,7 @@ const AddTouristsSpot = () => {
                 <input
                   type="text"
                   name="average_cost"
-                  placeholder="Enter average cost"
+                  defaultValue={spotData.average_cost}
                   className="input bg-gray-200"
                   required
                 />
@@ -136,7 +131,7 @@ const AddTouristsSpot = () => {
                 <input
                   type="text"
                   name="tourists_spot_name"
-                  placeholder="Enter tourists spot name"
+                  defaultValue={spotData.tourists_spot_name}
                   className="input bg-gray-200"
                   required
                 />
@@ -152,7 +147,7 @@ const AddTouristsSpot = () => {
                 <input
                   type="text"
                   name="location"
-                  placeholder="Enter location"
+                  defaultValue={spotData.location}
                   className="input bg-gray-200"
                   required
                 />
@@ -166,7 +161,7 @@ const AddTouristsSpot = () => {
                 <input
                   type="text"
                   name="seasonality"
-                  placeholder="Enter seasonality"
+                  defaultValue={spotData.seasonality}
                   className="input bg-gray-200"
                   required
                 />
@@ -181,10 +176,11 @@ const AddTouristsSpot = () => {
                 </label>
                 <select
                   name="travel_time"
+                  defaultValue={spotData.travel_time}
                   className="select bg-gray-200 w-full"
                   required
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     Select travel time
                   </option>
                   <option value="1-2 days">1-2 days</option>
@@ -204,7 +200,7 @@ const AddTouristsSpot = () => {
                 <input
                   type="text"
                   name="totalVisitorsPerYear"
-                  placeholder="Enter total visitors per year"
+                  defaultValue={spotData.totalVisitorsPerYear}
                   className="input bg-gray-200"
                   required
                 />
@@ -215,7 +211,7 @@ const AddTouristsSpot = () => {
                 type="submit"
                 className="btn btn-primary hover:btn-secondary border-none text-white text-[18px]"
               >
-                Add Tourist Spot
+                Update Tourist Spot
               </button>
             </div>
           </form>
@@ -225,4 +221,4 @@ const AddTouristsSpot = () => {
   );
 };
 
-export default AddTouristsSpot;
+export default UpdateTouristsSpot;

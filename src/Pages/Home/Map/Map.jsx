@@ -5,7 +5,7 @@ const MapWithTitle = () => {
   return (
     <div className="max-w-screen-xl mx-auto bg-base-200 pb-12">
       <div className="px-4 lg:px-6">
-        <h1 className="text-center text-4xl font-extrabold pt-8 pb-4">Tourist Map</h1>
+        <h1 className="text-center text-4xl font-extrabold pt-8 pb-4">Find Your Tourist Spots On Map</h1>
         <p className="w-full md:w-3/4 mx-auto text-center text-lg text-gray-600 mb-6">
         Discover popular tourist spots and attractions on the map below. Explore the beauty and culture of destinations around the world.
         </p>
