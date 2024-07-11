@@ -1,12 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../Hooks/UseAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const UpdateTouristsSpot = () => {
   const { user } = useAuth();
   const { id } = useParams();
   const [spotData, setSpotData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -46,13 +48,49 @@ const UpdateTouristsSpot = () => {
       userEmail,
       userName,
     };
-    console.log(updatedInfo);
-
-    // Add your axios call to update the tourist spot with `updatedInfo`
+    axios
+      .put(`http://localhost:5000/my-list/${id}`, updatedInfo)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Tourist spot updated successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/my-list");
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Tourist spot failed to update!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error updating tourist spot:", error);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Tourist spot failed to update!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
 
   if (!spotData) {
-    return <div>Loading...</div>; // or any other loading indicator
+    return (
+      <div className="min-h-[calc(100vh-366px)] flex items-center justify-center">
+        <div>
+          <span className="loading loading-bars loading-lg"></span>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -73,7 +111,7 @@ const UpdateTouristsSpot = () => {
                 <input
                   type="text"
                   name="name"
-                  defaultValue={spotData.location}
+                  defaultValue={spotData.name}
                   className="input w-full bg-gray-200"
                   required
                 />
