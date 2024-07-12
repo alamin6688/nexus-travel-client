@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import EmptyState from "../../Components/EmptyState";
 import { Link } from "react-router-dom";
+import 'animate.css';
 
 const MyList = () => {
   const { user } = useAuth();
@@ -71,7 +72,7 @@ const MyList = () => {
   };
 
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-200 animate__animated animate__zoomIn">
       <div className="min-h-[calc(100vh-287px)] max-w-screen-xl mx-auto flex flex-col justify-center px-6 md:px-4 lg:px-2 pb-10">
         {loading ? (
           <div className="flex items-center justify-center h-full">
@@ -80,14 +81,17 @@ const MyList = () => {
         ) : (
           <div>
             <div className="text-center text-3xl md:text-4xl font-extrabold pt-8">
-              <h1>My Tourists Spots List</h1>
+              <h1>Tourist Spots List</h1>
             </div>
             <div className="w-full max-w-screen-lg mx-auto overflow-x-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400 py-10">
               <table className="min-w-full bg-white border-gray-200 shadow-md rounded-lg overflow-hidden">
                 <thead className="bg-gray-300 text-gray-700">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                      Name
+                      SL No.
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                      Country Name
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                       Tourists Spot Name
@@ -104,8 +108,11 @@ const MyList = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y text-gray-700 divide-gray-200">
-                  {touristSpots.map((spot) => (
+                  {touristSpots.map((spot, idx) => (
                     <tr key={spot._id}>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {idx +1}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {spot.name}
                       </td>
@@ -121,11 +128,13 @@ const MyList = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex gap-2 items-center">
                           <Link to={`/updateTouristsSpot/${spot._id}`}>
-                            <button className="btn btn-primary">Update</button>
+                            <button className="btn btn-primary text-[16px] font-bold text-white">
+                              Update
+                            </button>
                           </Link>
                           <button
                             onClick={() => handleDelete(spot._id)}
-                            className="btn bg-error"
+                            className="btn text-[16px] font-bold text-white bg-red-500 hover:bg-red-600"
                           >
                             Delete
                           </button>

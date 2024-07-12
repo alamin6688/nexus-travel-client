@@ -26,9 +26,9 @@ const NewsLetter = () => {
             />
             <button
               type="button"
-              className="btn border-none btn-primary w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3"
+              className="btn border-none btn-primary w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 dark:text-gray-50"
             >
-              Subscribe
+              Join Now
             </button>
           </div>
         </div>

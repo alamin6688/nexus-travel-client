@@ -91,9 +91,12 @@ const DetailsPage = () => {
                 alt={touristSpot.name}
               />
               <div className="w-full space-y-4">
-                <h1 className="text-5xl font-bold">{touristSpot.name}</h1>
-                <h4 className="font-semibold text-2xl">
+                <h1 className="text-5xl font-bold">
                   {touristSpot.tourists_spot_name}
+                </h1>
+                <h4 className="font-semibold text-xl">
+                  <span className="font-semibold">Country Name:</span>{" "}
+                  {touristSpot.name}
                 </h4>
                 <p>
                   <span className="font-semibold">Description:</span>{" "}
@@ -126,7 +129,7 @@ const DetailsPage = () => {
                 <div className="pt-2">
                   <button
                     onClick={() => handleAdd(id)}
-                    className="btn btn-primary"
+                    className="btn btn-primary bg-green-600 hover:bg-green-700 border-none"
                   >
                     Add To List
                   </button>

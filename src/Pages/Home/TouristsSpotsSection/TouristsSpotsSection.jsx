@@ -46,7 +46,7 @@ const TouristsSpotsSection = () => {
         </div>
         <div className="text-center">
           <Link to="/allTouristsSpot">
-            <button className="btn btn-primary">Explore More</button>
+            <button className="btn btn-primary bg-green-600 hover:bg-green-700 border-none">Explore More...</button>
           </Link>
         </div>
       </div>

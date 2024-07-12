@@ -5,6 +5,7 @@ import AllTouristsSpotCard from "./AllTouristsSpotCard";
 const AllTouristsSpot = () => {
   const [touristSpot, setTouristSpot] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filterOption, setFilterOption] = useState("");
 
   useEffect(() => {
     axios
@@ -20,6 +21,13 @@ const AllTouristsSpot = () => {
       });
   }, []);
 
+  const filteredTouristSpots = touristSpot.filter((spot) =>
+    spot.name.toLowerCase().includes(filterOption.toLowerCase())
+  );
+
+  // Create a unique list of tourist spot names for the select dropdown
+  const uniqueNames = [...new Set(touristSpot.map((spot) => spot.name))];
+
   return (
     <div className="bg-base-200">
       <div className="min-h-[calc(100vh-287px)] max-w-screen-xl mx-auto flex flex-col justify-center px-6 md:px-4 lg:px-2 pb-10">
@@ -29,11 +37,32 @@ const AllTouristsSpot = () => {
           </div>
         ) : (
           <div>
-            <div className="text-center text-3xl md:text-4xl font-extrabold pt-8">
-              <h1>All Tourists Spots</h1>
+            <div className="text-center pt-8">
+              <h1 className="text-3xl md:text-4xl font-extrabold">
+                All Tourist Spots
+              </h1>
+              <p className="w-full md:w-3/4 mx-auto pt-3 text-[18px]">
+                Discover a place where history and natural beauty converge;
+                Offering unforgettable experiences and lasting memories for
+                adventurers of all kinds.
+              </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
-              {touristSpot.map((card) => (
+            <div className="flex justify-center pt-4 md:pt-8">
+              <select
+                value={filterOption}
+                onChange={(e) => setFilterOption(e.target.value)}
+                className="select select-bordered w-full max-w-xs"
+              >
+                <option value="">All Countries</option>
+                {uniqueNames.map((name) => (
+                  <option key={name} value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 md:pt-8 pb-10">
+              {filteredTouristSpots.map((card) => (
                 <AllTouristsSpotCard key={card._id} card={card} />
               ))}
             </div>
