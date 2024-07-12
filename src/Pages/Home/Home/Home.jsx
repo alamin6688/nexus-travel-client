@@ -6,7 +6,7 @@ import TouristsSpotsSection from "../TouristsSpotsSection/TouristsSpotsSection";
 
 const Home = () => {
     return (
-        <div className="min-h-[calc(100vh-366px)]">
+        <div className="min-h-[calc(100vh-287px)]">
             <Banner></Banner>
             <TouristsSpotsSection></TouristsSpotsSection>
             <Map></Map>

@@ -76,7 +76,7 @@ const DetailsPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-366px)] flex flex-col items-center justify-center bg-base-300">
+    <div className="min-h-[calc(100vh-287px)] flex flex-col items-center justify-center bg-base-300">
       {loading ? (
         <div className="flex items-center justify-center h-full">
           <span className="loading loading-bars loading-lg"></span>

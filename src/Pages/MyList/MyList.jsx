@@ -72,7 +72,7 @@ const MyList = () => {
 
   return (
     <div className="bg-base-200">
-      <div className="min-h-[calc(100vh-366px)] max-w-screen-xl mx-auto flex flex-col justify-center px-6 md:px-4 lg:px-2 pb-10">
+      <div className="min-h-[calc(100vh-287px)] max-w-screen-xl mx-auto flex flex-col justify-center px-6 md:px-4 lg:px-2 pb-10">
         {loading ? (
           <div className="flex items-center justify-center h-full">
             <span className="loading loading-bars loading-lg"></span>
