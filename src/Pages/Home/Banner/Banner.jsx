@@ -6,7 +6,7 @@ const Banner = () => {
       <div className="carousel w-full h-[420px] md:h-[700px]">
         <div id="slide1" className="carousel-item relative w-full">
           <img
-            src="https://i.postimg.cc/wMtVGq6J/beautiful-manhattan-bridge-new-york-usa.jpg"
+            src="https://i.postimg.cc/YC2wzWk4/umbrella-chair-around-swimming-pool.jpg"
             className="w-full  object-cover"
           />
           <div className="absolute flex items-center md:w-full h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)] p-4 md:p-14">
