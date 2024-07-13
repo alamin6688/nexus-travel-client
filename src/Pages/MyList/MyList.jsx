@@ -72,14 +72,14 @@ const MyList = () => {
   };
 
   return (
-    <div className="bg-base-200 animate__animated animate__zoomIn">
+    <div className="bg-base-200">
       <div className="min-h-[calc(100vh-287px)] max-w-screen-xl mx-auto flex flex-col justify-center px-6 md:px-4 lg:px-2 pb-10">
         {loading ? (
           <div className="flex items-center justify-center h-full">
             <span className="loading loading-bars loading-lg"></span>
           </div>
         ) : (
-          <div>
+          <div className="animate__animated animate__zoomIn">
             <div className="text-center text-3xl md:text-4xl font-extrabold pt-8">
               <h1>Tourist Spots List</h1>
             </div>
