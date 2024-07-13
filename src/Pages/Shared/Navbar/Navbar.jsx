@@ -77,9 +77,9 @@ const Navbar = () => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="btn btn-ghost text-secondary pl-1 gap-0 text-2xl md:text-4xl"
+            className="btn btn-ghost pl-1 gap-0 text-2xl md:text-4xl"
           >
-            Nexus<span className="text-primary">Travel</span>
+            Nexus<span className="text-green-500">Travel</span>
           </NavLink>
         </div>
         {/* Navigation links for desktop */}
