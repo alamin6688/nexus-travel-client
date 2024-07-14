@@ -9,7 +9,7 @@ const TouristsSpotsSection = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allTouristSpot")
+      .get("https://nexus-travel-server.vercel.app/allTouristSpot")
       .then((response) => {
         console.log(response.data);
         setTouristSpots(response.data);
@@ -39,7 +39,7 @@ const TouristsSpotsSection = () => {
           </h1>
           <p className="w-full md:w-3/4 mx-auto pt-4">
             Embark on a cultural odyssey through iconic destinations, where
-            history, beauty, and adventure converge in unforgettable
+            history, beauty and adventure converge in unforgettable
             experiences.
           </p>
         </div>

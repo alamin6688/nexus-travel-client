@@ -35,7 +35,7 @@ const SignUp = () => {
         updateUserProfile(name, photoURL);
 
         // Post a User to DB
-        return axios.post("http://localhost:5000/users", user);
+        return axios.post("https://nexus-travel-server.vercel.app/users", user);
       })
       .then(() => {
         Swal.fire({

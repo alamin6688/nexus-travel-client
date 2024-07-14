@@ -13,7 +13,7 @@ const MyList = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/my-List`, {
+      .get(`https://nexus-travel-server.vercel.app/my-List`, {
         params: {
           email: user?.email,
         },
@@ -50,7 +50,7 @@ const MyList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/my-list/${id}`)
+          .delete(`https://nexus-travel-server.vercel.app/my-list/${id}`)
           .then(() => {
             Swal.fire({
               title: "Deleted!",

@@ -12,7 +12,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allTouristSpot/${id}`)
+      .get(`https://nexus-travel-server.vercel.app/allTouristSpot/${id}`)
       .then((response) => {
         setTouristSpot(response.data);
         setLoading(false);
@@ -40,7 +40,7 @@ const DetailsPage = () => {
       cartId: touristSpot._id,
     };
     axios
-      .post(`http://localhost:5000/my-List`, myList)
+      .post(`https://nexus-travel-server.vercel.app/my-List`, myList)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

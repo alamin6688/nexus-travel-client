@@ -36,7 +36,7 @@ const AddTouristsSpot = () => {
     console.log(addInfo);
 
     axios
-      .post("http://localhost:5000/addTouristSpot", addInfo)
+      .post("https://nexus-travel-server.vercel.app/addTouristSpot", addInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

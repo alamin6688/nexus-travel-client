@@ -25,7 +25,7 @@ const SocialLogin = () => {
 
         
         // Post user to backend
-        axios.post("http://localhost:5000/users", user)
+        axios.post("https://nexus-travel-server.vercel.app/users", user)
           .then(() => {
             Swal.fire({
               position: "center",
