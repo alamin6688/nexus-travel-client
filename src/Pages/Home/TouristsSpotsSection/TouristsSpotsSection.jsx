@@ -39,8 +39,7 @@ const TouristsSpotsSection = () => {
           </h1>
           <p className="w-full md:w-3/4 mx-auto pt-4">
             Embark on a cultural odyssey through iconic destinations, where
-            history, beauty and adventure converge in unforgettable
-            experiences.
+            history, beauty and adventure converge in unforgettable experiences.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-10">

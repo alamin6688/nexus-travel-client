@@ -134,7 +134,7 @@ const MyList = () => {
                           </Link>
                           <button
                             onClick={() => handleDelete(spot._id)}
-                            className="btn text-[16px] font-bold text-white bg-red-500 hover:bg-red-600"
+                            className="btn text-[16px] font-bold text-white bg-red-500 border-none hover:bg-red-600"
                           >
                             Delete
                           </button>

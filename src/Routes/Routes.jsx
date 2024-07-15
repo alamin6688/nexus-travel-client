@@ -9,11 +9,13 @@ import AllTouristsSpot from "../Pages/AllTouristsSpot/AllTouristsSpot";
 import MyList from "../Pages/MyList/MyList";
 import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import UpdateTouristsSpot from "../Pages/UpdateTouristsSpot/UpdateTouristsSpot";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
  export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
