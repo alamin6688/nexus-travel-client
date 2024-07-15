@@ -4,7 +4,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import EmptyState from "../../Components/EmptyState";
 import { Link } from "react-router-dom";
-import 'animate.css';
+import "animate.css";
+import { Helmet } from "react-helmet-async";
 
 const MyList = () => {
   const { user } = useAuth();
@@ -73,6 +74,9 @@ const MyList = () => {
 
   return (
     <div className="bg-base-200">
+      <Helmet>
+        <title>Nexus Travel | My List</title>
+      </Helmet>
       <div className="min-h-[calc(100vh-287px)] max-w-screen-xl mx-auto flex flex-col justify-center px-6 md:px-4 lg:px-2 pb-10">
         {loading ? (
           <div className="flex items-center justify-center h-full">
@@ -110,9 +114,7 @@ const MyList = () => {
                 <tbody className="divide-y text-gray-700 divide-gray-200">
                   {touristSpots.map((spot, idx) => (
                     <tr key={spot._id}>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {idx +1}
-                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">{idx + 1}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {spot.name}
                       </td>

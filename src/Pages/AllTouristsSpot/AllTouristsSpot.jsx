@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AllTouristsSpotCard from "./AllTouristsSpotCard";
+import { Helmet } from "react-helmet-async";
 
 const AllTouristsSpot = () => {
   const [touristSpot, setTouristSpot] = useState([]);
@@ -30,6 +31,9 @@ const AllTouristsSpot = () => {
 
   return (
     <div className="bg-base-200">
+      <Helmet>
+        <title>Nexus Travel | All Tourist Spots</title>
+      </Helmet>
       <div className="min-h-[calc(100vh-287px)] max-w-screen-xl mx-auto flex flex-col justify-center px-6 md:px-4 lg:px-2 pb-10">
         {loading ? (
           <div className="flex items-center justify-center h-full">

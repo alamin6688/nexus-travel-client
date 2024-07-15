@@ -1,7 +1,8 @@
 import axios from "axios";
 import useAuth from "../../Hooks/UseAuth";
 import Swal from "sweetalert2";
-import 'animate.css';
+import "animate.css";
+import { Helmet } from "react-helmet-async";
 
 const AddTouristsSpot = () => {
   const { user } = useAuth();
@@ -63,6 +64,9 @@ const AddTouristsSpot = () => {
 
   return (
     <div className="min-h-[calc(100vh-287px)] lg:mt-12 lg:mb-16 animate__animated animate__zoomIn">
+      <Helmet>
+        <title>Nexus Travel | Add Tourist Spot</title>
+      </Helmet>
       <div className="min-h-[calc(100vh-380px)] max-w-screen-xl mx-auto flex flex-col items-center justify-center">
         <div className="bg-base-200 w-full rounded-xl py-8 md:px-16">
           <h2 className="text-center font-inter text-3xl font-extrabold">

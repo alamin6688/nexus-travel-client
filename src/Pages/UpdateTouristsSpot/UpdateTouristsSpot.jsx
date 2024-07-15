@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/UseAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UpdateTouristsSpot = () => {
   const { user } = useAuth();
@@ -95,6 +96,9 @@ const UpdateTouristsSpot = () => {
 
   return (
     <div className="min-h-[calc(100vh-287px)] lg:mt-12 lg:mb-16">
+      <Helmet>
+        <title>Nexus Travel | Update Tourist Spot</title>
+      </Helmet>
       <div className="min-h-[calc(100vh-380px)] max-w-screen-xl mx-auto flex flex-col items-center justify-center">
         <div className="bg-base-200 w-full rounded-xl py-8 md:px-16">
           <h2 className="text-center font-inter text-3xl font-extrabold">
