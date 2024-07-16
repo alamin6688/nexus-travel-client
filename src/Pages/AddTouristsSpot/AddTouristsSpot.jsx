@@ -37,14 +37,14 @@ const AddTouristsSpot = () => {
     console.log(addInfo);
 
     axios
-      .post("https://nexus-travel-server.vercel.app/addTouristSpot", addInfo)
+      .post("https://nexus-travel-server.vercel.app/my-List", addInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Tourist spot added successfully!",
+            title: "Tourist spot added in My List!",
             showConfirmButton: false,
             timer: 1500,
           });

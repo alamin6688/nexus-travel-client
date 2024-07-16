@@ -68,7 +68,7 @@ const DetailsPage = () => {
                     {touristSpot.seasonality}
                   </p>
                   <p>
-                    <span className="font-semibold">Average Cost:</span>{" "}
+                    <span className="font-semibold">Average Cost:</span>{" "}$
                     {touristSpot.average_cost}
                   </p>
                 </div>
