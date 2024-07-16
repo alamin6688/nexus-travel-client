@@ -1,11 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useAuth from "../../Hooks/UseAuth";
-import Swal from "sweetalert2";
 
 const DetailsPage = () => {
-  const { user } = useAuth();
   const [touristSpot, setTouristSpot] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -23,57 +20,6 @@ const DetailsPage = () => {
       });
   }, [id]);
 
-  const handleAdd = (id) => {
-    console.log(id);
-    const myList = {
-      name: touristSpot.name,
-      description: touristSpot.description,
-      image: touristSpot.image,
-      average_cost: touristSpot.average_cost,
-      tourists_spot_name: touristSpot.tourists_spot_name,
-      location: touristSpot.location,
-      seasonality: touristSpot.seasonality,
-      travel_time: touristSpot.travel_time,
-      totalVisitorsPerYear: touristSpot.totalVisitorsPerYear,
-      loggedUser: user?.email,
-      userName: user?.displayName,
-      cartId: touristSpot._id,
-    };
-    axios
-      .post(`https://nexus-travel-server.vercel.app/my-List`, myList)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Added to your list successfully!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-        if (error.response && error.response.data.message) {
-          Swal.fire({
-            position: "center",
-            icon: "error",
-            title: error.response.data.message,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        } else {
-          Swal.fire({
-            position: "center",
-            icon: "error",
-            title: "Tourist spot failed to add in your list!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
-  };
 
   return (
     <div className="min-h-[calc(100vh-287px)] flex flex-col items-center justify-center bg-base-300">
@@ -125,14 +71,6 @@ const DetailsPage = () => {
                     <span className="font-semibold">Average Cost:</span>{" "}
                     {touristSpot.average_cost}
                   </p>
-                </div>
-                <div className="pt-2">
-                  <button
-                    onClick={() => handleAdd(id)}
-                    className="btn btn-primary bg-green-600 hover:bg-green-700 border-none"
-                  >
-                    Add To List
-                  </button>
                 </div>
               </div>
             </div>
