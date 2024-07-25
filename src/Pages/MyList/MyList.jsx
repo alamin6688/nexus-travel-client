@@ -1,24 +1,20 @@
 import { useEffect, useState } from "react";
-import useAuth from "../../Hooks/UseAuth";
 import axios from "axios";
-import Swal from "sweetalert2";
 import EmptyState from "../../Components/EmptyState";
 import { Link } from "react-router-dom";
-import "animate.css";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/UseAuth";
 
 const MyList = () => {
   const { user } = useAuth();
+  console.log(user);
   const [touristSpots, setTouristSpots] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get(`https://nexus-travel-server.vercel.app/my-List`, {
-        params: {
-          email: user?.email,
-        },
-      })
+      .get(`http://localhost:5000/allTouristSpot`)
       .then((response) => {
         setTouristSpots(response.data);
         setLoading(false);
@@ -27,7 +23,7 @@ const MyList = () => {
         console.error("There was an error fetching the tourist spots!", error);
         setLoading(false);
       });
-  }, [user]);
+  }, []);
 
   if (touristSpots?.length < 1) {
     return (
@@ -51,7 +47,7 @@ const MyList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://nexus-travel-server.vercel.app/my-list/${id}`)
+          .delete(`http://localhost:5000/allTouristSpot/${id}`)
           .then(() => {
             Swal.fire({
               title: "Deleted!",
@@ -87,7 +83,7 @@ const MyList = () => {
             <div className="text-center text-3xl md:text-4xl font-extrabold pt-8">
               <h1>Tourist Spots List</h1>
             </div>
-            <div className="w-full max-w-screen-lg mx-auto overflow-x-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400 py-10">
+            <div className="w-full max-w-screen-xl mx-auto overflow-x-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400 py-10">
               <table className="min-w-full bg-white border-gray-200 shadow-md rounded-lg overflow-hidden">
                 <thead className="bg-gray-300 text-gray-700">
                   <tr>
@@ -101,7 +97,7 @@ const MyList = () => {
                       Tourists Spot Name
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                      Travel Time
+                      Travel Time(days)
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                       Average Cost
@@ -125,7 +121,7 @@ const MyList = () => {
                         {spot.travel_time}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {spot.average_cost}
+                        ${spot.average_cost}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex gap-2 items-center">

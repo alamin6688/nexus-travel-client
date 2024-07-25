@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { TiWorld } from "react-icons/ti";
 import { useParams } from "react-router-dom";
 
 const DetailsPage = () => {
@@ -9,7 +10,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://nexus-travel-server.vercel.app/allTouristSpot/${id}`)
+      .get(`http://localhost:5000/allTouristSpot/${id}`)
       .then((response) => {
         setTouristSpot(response.data);
         setLoading(false);
@@ -19,7 +20,6 @@ const DetailsPage = () => {
         setLoading(false);
       });
   }, [id]);
-
 
   return (
     <div className="min-h-[calc(100vh-287px)] flex flex-col items-center justify-center bg-base-300">
@@ -41,8 +41,12 @@ const DetailsPage = () => {
                   {touristSpot.tourists_spot_name}
                 </h1>
                 <h4 className="font-semibold text-xl">
-                  <span className="font-semibold">Country Name:</span>{" "}
-                  {touristSpot.name}
+                  <div className="flex items-center justify-start gap-1">
+                    <span className="font-semibold">
+                      <TiWorld className="text-3xl"/>
+                    </span>
+                    <div>{touristSpot.name}</div>
+                  </div>
                 </h4>
                 <p>
                   <span className="font-semibold">Description:</span>{" "}
@@ -68,7 +72,7 @@ const DetailsPage = () => {
                     {touristSpot.seasonality}
                   </p>
                   <p>
-                    <span className="font-semibold">Average Cost:</span>{" "}$
+                    <span className="font-semibold">Average Cost:</span> $
                     {touristSpot.average_cost}
                   </p>
                 </div>

@@ -1,8 +1,10 @@
+import { TiWorld } from "react-icons/ti";
 import { Link } from "react-router-dom";
 
 const AllTouristsSpotCard = ({ card }) => {
   const {
     _id,
+    name,
     description,
     image,
     tourists_spot_name,
@@ -25,6 +27,12 @@ const AllTouristsSpotCard = ({ card }) => {
         <div className="p-4 pb-8 space-y-2 flex-1 flex flex-col">
           <div className="mt-1 mb-3">
             <h2 className="card-title text-3xl">{tourists_spot_name}</h2>
+            <div className="flex items-center justify-start gap-1">
+              <span className="font-semibold">
+                <TiWorld className="text-xl" />
+              </span>
+              <div className="font-semibold">{name}</div>
+            </div>
           </div>
           <p className="line-clamp-3 text-[16px]">{description}</p>
           <div className="flex-1"></div>
@@ -40,8 +48,8 @@ const AllTouristsSpotCard = ({ card }) => {
               <span className="font-semibold">Seasonality:</span> {seasonality}
             </p>
             <p>
-              <span className="font-semibold">Average Cost:</span>{" "}
-              ${average_cost}
+              <span className="font-semibold">Average Cost:</span> $
+              {average_cost}
             </p>
           </div>
           <div className="card-action pt-4">

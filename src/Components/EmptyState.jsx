@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const EmptyState = ({ message, address, label }) => {
   return (
-    <div className="min-h-[calc(100vh-382px)] gap flex flex-col items-center justify-center pb-16 space-y-2">
+    <div className="min-h-[calc(100vh-287px)] gap flex flex-col items-center justify-center pb-16 space-y-2">
       <p className="text-gray-600 text-xl lg:text-3xl">{message}</p>
       <Link
         to={address}

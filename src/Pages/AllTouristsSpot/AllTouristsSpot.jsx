@@ -7,10 +7,11 @@ const AllTouristsSpot = () => {
   const [touristSpot, setTouristSpot] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterOption, setFilterOption] = useState("");
+  const [sortOption, setSortOption] = useState("");
 
   useEffect(() => {
     axios
-      .get("https://nexus-travel-server.vercel.app/allTouristSpot")
+      .get("http://localhost:5000/allTouristSpot")
       .then((response) => {
         console.log(response.data);
         setTouristSpot(response.data);
@@ -22,9 +23,22 @@ const AllTouristsSpot = () => {
       });
   }, []);
 
-  const filteredTouristSpots = touristSpot.filter((spot) =>
-    spot.name.toLowerCase().includes(filterOption.toLowerCase())
-  );
+  const filteredTouristSpots = touristSpot
+    .filter((spot) =>
+      spot.name.toLowerCase().includes(filterOption.toLowerCase())
+    )
+    .sort((a, b) => {
+      const costA = parseInt(a.average_cost[0], 10);
+      const costB = parseInt(b.average_cost[0], 10);
+
+      if (sortOption === "low-to-high") {
+        return costA - costB;
+      } else if (sortOption === "high-to-low") {
+        return costB - costA;
+      } else {
+        return 0;
+      }
+    });
 
   // Create a unique list of tourist spot names for the select dropdown
   const uniqueNames = [...new Set(touristSpot.map((spot) => spot.name))];
@@ -63,6 +77,15 @@ const AllTouristsSpot = () => {
                     {name}
                   </option>
                 ))}
+              </select>
+              <select
+                value={sortOption}
+                onChange={(e) => setSortOption(e.target.value)}
+                className="select select-bordered w-full max-w-xs ml-4"
+              >
+                <option value="">Sort by Cost</option>
+                <option value="low-to-high">Low to High</option>
+                <option value="high-to-low">High to Low</option>
               </select>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 md:pt-8 pb-10">

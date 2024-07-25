@@ -1,8 +1,7 @@
 import axios from "axios";
-import useAuth from "../../Hooks/UseAuth";
 import Swal from "sweetalert2";
-import "animate.css";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../Hooks/UseAuth";
 
 const AddTouristsSpot = () => {
   const { user } = useAuth();
@@ -20,7 +19,7 @@ const AddTouristsSpot = () => {
     const travel_time = form.travel_time.value;
     const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
     const userEmail = user?.email;
-    const userName = user?.displayName;
+    const userName = user?.displayName || user?.name;
     const addInfo = {
       name,
       description,
@@ -37,14 +36,14 @@ const AddTouristsSpot = () => {
     console.log(addInfo);
 
     axios
-      .post("https://nexus-travel-server.vercel.app/my-List", addInfo)
+      .post("http://localhost:5000/allTouristSpot", addInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Tourist spot added in My List!",
+            title: "Tourist spot added successfully!",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -125,7 +124,7 @@ const AddTouristsSpot = () => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   name="average_cost"
                   placeholder="Enter average cost"
                   className="input bg-gray-200"
@@ -181,24 +180,16 @@ const AddTouristsSpot = () => {
               <div className="form-control md:w-1/2">
                 <label className="label">
                   <span className="label-text text-[16px] font-bold">
-                    Travel Time
+                    Travel Time(days)
                   </span>
                 </label>
-                <select
+                <input
+                  type="text"
                   name="travel_time"
-                  className="select bg-gray-200 w-full"
+                  placeholder="Enter Travel Time"
+                  className="input bg-gray-200"
                   required
-                >
-                  <option value="" disabled selected>
-                    Select travel time
-                  </option>
-                  <option value="1-2 days">1-2 days</option>
-                  <option value="3-4 days">3-4 days</option>
-                  <option value="4-5 days">4-5 days</option>
-                  <option value="5-6 days">5-6 days</option>
-                  <option value="7 days">7 days</option>
-                  <option value="10 days">10 days</option>
-                </select>
+                />
               </div>
               <div className="form-control md:w-1/2">
                 <label className="label">

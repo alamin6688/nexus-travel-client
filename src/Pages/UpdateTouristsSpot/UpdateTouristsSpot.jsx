@@ -13,7 +13,7 @@ const UpdateTouristsSpot = () => {
 
   useEffect(() => {
     axios
-      .get(`https://nexus-travel-server.vercel.app/my-list/${id}`)
+      .get(`http://localhost:5000/allTouristSpot/${id}`)
       .then((response) => {
         setSpotData(response.data);
       })
@@ -50,7 +50,7 @@ const UpdateTouristsSpot = () => {
       userName,
     };
     axios
-      .put(`https://nexus-travel-server.vercel.app/my-list/${id}`, updatedInfo)
+      .put(`http://localhost:5000/allTouristSpot/${id}`, updatedInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
@@ -99,7 +99,7 @@ const UpdateTouristsSpot = () => {
       <Helmet>
         <title>Nexus Travel | Update Tourist Spot</title>
       </Helmet>
-      <div className="min-h-[calc(100vh-380px)] max-w-screen-xl mx-auto flex flex-col items-center justify-center">
+      <div className="min-h-[calc(100vh-380px)] max-w-screen-xl mx-auto flex flex-col items-center justify-center animate__animated animate__zoomIn">
         <div className="bg-base-200 w-full rounded-xl py-8 md:px-16">
           <h2 className="text-center font-inter text-3xl font-extrabold">
             Update Tourist Spot
