@@ -8,7 +8,6 @@ import useAuth from "../../Hooks/UseAuth";
 
 const MyList = () => {
   const { user } = useAuth();
-  console.log(user);
   const [touristSpots, setTouristSpots] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +24,12 @@ const MyList = () => {
       });
   }, []);
 
-  if (touristSpots?.length < 1) {
+  // Filtering tourist spots by the logged-in user's email
+  const filteredSpots = touristSpots.filter(
+    (spot) => spot.userEmail === user?.email
+  );
+
+  if (filteredSpots.length < 1) {
     return (
       <EmptyState
         message={"No Tourist Spots added yet!"}
@@ -108,7 +112,7 @@ const MyList = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y text-gray-700 divide-gray-200">
-                  {touristSpots.map((spot, idx) => (
+                  {filteredSpots.map((spot, idx) => (
                     <tr key={spot._id}>
                       <td className="px-6 py-4 whitespace-nowrap">{idx + 1}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
