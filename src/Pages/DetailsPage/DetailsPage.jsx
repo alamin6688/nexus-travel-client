@@ -10,7 +10,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allTouristSpot/${id}`)
+      .get(`https://nexus-travel-server.vercel.app/allTouristSpot/${id}`)
       .then((response) => {
         setTouristSpot(response.data);
         setLoading(false);

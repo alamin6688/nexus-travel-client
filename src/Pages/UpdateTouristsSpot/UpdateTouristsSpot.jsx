@@ -13,7 +13,7 @@ const UpdateTouristsSpot = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allTouristSpot/${id}`)
+      .get(`https://nexus-travel-server.vercel.app/allTouristSpot/${id}`)
       .then((response) => {
         setSpotData(response.data);
       })
@@ -50,7 +50,7 @@ const UpdateTouristsSpot = () => {
       userName,
     };
     axios
-      .put(`http://localhost:5000/allTouristSpot/${id}`, updatedInfo)
+      .put(`https://nexus-travel-server.vercel.app/allTouristSpot/${id}`, updatedInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {

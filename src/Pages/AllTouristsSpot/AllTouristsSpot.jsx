@@ -11,7 +11,7 @@ const AllTouristsSpot = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allTouristSpot")
+      .get("https://nexus-travel-server.vercel.app/allTouristSpot")
       .then((response) => {
         console.log(response.data);
         setTouristSpot(response.data);

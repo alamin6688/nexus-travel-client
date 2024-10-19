@@ -13,7 +13,7 @@ const MyList = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allTouristSpot`)
+      .get(`https://nexus-travel-server.vercel.app/allTouristSpot`)
       .then((response) => {
         setTouristSpots(response.data);
         setLoading(false);
@@ -51,7 +51,7 @@ const MyList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/allTouristSpot/${id}`)
+          .delete(`https://nexus-travel-server.vercel.app/allTouristSpot/${id}`)
           .then(() => {
             Swal.fire({
               title: "Deleted!",
